@@ -23,3 +23,10 @@ class Order(models.Model):
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     sub_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+
+class OrderLineItem(models.Model):
+    order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, realated_name='lineitems')
+    product = models.ForeignKey(Product,null=False, blank=False, on_delete=models.CASCADE)
+    product_size = models.models.CharField(max_length=2, null=True, blank=True) # S, M, L
+    quantity = models.IntegerField(null=False, blank=False, default=0)
+    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
