@@ -6,7 +6,7 @@ from .forms import OrderForm
 # Create your views here.
 
 def checkout(request):
-    bag = request.session.get('bag', {}
+    bag = request.session.get('bag', {})
     if not bag:
         messages.error(request, "Your bag is currently empty!")
         return redirect(reverse('products'))
