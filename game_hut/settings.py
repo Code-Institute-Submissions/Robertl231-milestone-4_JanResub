@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'checkout',
+
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -59,6 +61,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'game_hut.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
