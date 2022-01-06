@@ -28,6 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-blue-trout-d87u96on.ws-eu25.gitpod.io/',
+    ]
+
 
 # Application definition
 
