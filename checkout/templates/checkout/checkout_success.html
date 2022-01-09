@@ -22,12 +22,22 @@
                 <hr>
                     <h2 class="logo-font mb-4">Thank You</h2>
                 <hr>
-                <p class="text-black">A conformation email will be sent to {{ order.email }}</p>
+                <p class="text-black">A conformation email will be sent to <strong>{{ order.email }}</strong></p>
             </div>
         </div>
 
         <div class="row">
             <div class="col-12 col-lg-7"></div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-7 text-right">
+                <a href="{% url 'home' %}" class="btn btn-black rounded-0 m-2">
+                    <span class="icon mr-2">
+                        <i class="fas fa-home"></i>
+                    </span>
+                    <span class="text-uppercase">Back to the Home  page!</span>
+                </a>
+            </div>
         </div>
     </div>
 {% endblock %}
