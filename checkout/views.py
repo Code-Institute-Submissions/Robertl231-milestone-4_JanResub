@@ -37,25 +37,24 @@ def checkout(request):
                     product = Product.objects.get(id=item_id)
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
-                            order = order,
-                            product = product,
-                            quantity = item_data,
+                            order=order,
+                            product=product,
+                            quantity=item_data,
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data['item_by_size'].items():
+                        for size, quantity in item_data['items_by_size'].items():
                             order_line_item = OrderLineItem(
-                                order = order,
-                                product = product,
-                                quantity = quantity,
-                                product_size = size,
+                                order=order,
+                                product=product,
+                                quantity=quantity,
+                                product_size=size,
                             )
                             order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "One of the items in your basket isn't in our database!"
-                        "Please contact customer support"
-                    )
+                        "Please contact customer support")
                     )
                     order.delete()
                     return redirect(reverse('view_bag'))
@@ -98,3 +97,13 @@ def checkout_success(request, order_number):
     save_info = request.session.get('save-info')
     order = get_object_or_404(Order, order_number = order_number)
     messages.success(request, f'Order successfully processed! Your ordder number is {order_number}. A confirmation email will be sent to {order.email}.') 
+
+    if 'bag' in request.session:
+        del request.session['bag']
+
+    template = 'checkout/checkout_success.html'
+    context = {
+        'order':order,
+    }
+
+    return render(request, template, context)
