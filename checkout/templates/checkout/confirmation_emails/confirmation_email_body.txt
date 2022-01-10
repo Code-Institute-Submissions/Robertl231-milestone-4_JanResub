@@ -1,0 +1,16 @@
+Hello {{ order.full_name }}! 
+
+Thank you for your order! This is a confirmation email for your order at Game Hut! 
+Youll find your order information bellow. 
+
+Order Number: {{ order.order_number }} 
+Order Date: {{ order.date }} 
+Order Total: ${{ order.order_total }} 
+Delivery Charge: ${{ order.delivery_cost }} 
+Sub Total: ${{ order.sub_total }} 
+
+We will be shipping your order to {{ order.street_address1 }}, {{ order.town_or_city }}, {{ order.country }}. 
+If you require any more information, please contact us at {{ contact.email }} 
+
+Kind Regards, 
+Game Hut
