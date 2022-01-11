@@ -6,3 +6,7 @@
     max-height: 416px;
     overflow-y: auto;
 }
+
+.bg-yellow {
+    background-color: rgb(254, 176, 15, .5)
+}
